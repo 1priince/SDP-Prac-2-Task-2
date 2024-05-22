@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) {
         Reader reader = new Reader();
 
-        boolean printName = true;
+        boolean printName = false;
         boolean printPostalZip = false; // Change to true if you want to print
         boolean printRegion = true;
         boolean printCountry = false; // Change to true if you want to print

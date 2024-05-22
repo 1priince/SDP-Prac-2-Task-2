@@ -2,6 +2,7 @@ package prac2task2;
 import java.io.*;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
+import com.google.gson.JsonObject;
 
 public class Reader {
     public Reader() {}
@@ -20,26 +21,28 @@ public class Reader {
                 node = nodeList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
+                    JsonObject jsonObject = new JsonObject();
                     if (printName && "name".equals(node.getNodeName())) {
                         String name = element.getTextContent();
-                        System.out.println("Name: " + name);
+                        jsonObject.addProperty("Name", name);
                     }
                     if (printPostalZip && "postalZip".equals(node.getNodeName())) {
                         String postalZip = element.getTextContent();
-                        System.out.println("Postal/Zip: " + postalZip);
+                        jsonObject.addProperty("Postal/Zip", postalZip);
                     }
                     if (printRegion && "region".equals(node.getNodeName())) {
                         String region = element.getTextContent();
-                        System.out.println("Region: " + region);
+                        jsonObject.addProperty("Region", region);
                     }
                     if (printCountry && "country".equals(node.getNodeName())) {
                         String country = element.getTextContent();
-                        System.out.println("Country: " + country);
+                        jsonObject.addProperty("Country", country);
                     }
                     if (printAddress && "address".equals(node.getNodeName())) {
                         String address = element.getTextContent();
-                        System.out.println("Address: " + address);
+                        jsonObject.addProperty("Address", address);
                     }
+                    System.out.println(jsonObject.toString());
                 }
             }
         }
